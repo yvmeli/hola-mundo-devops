@@ -22,7 +22,6 @@ describe('Página HTML', () => {
     const parrafos = document.querySelectorAll('p');
     expect(parrafos.length).toBeGreaterThan(0);
     
-    // Verificar que al menos un párrafo contiene la palabra "Bienvenido"
     let contieneBienvenido = false;
     parrafos.forEach(p => {
       if (p.textContent.includes('Bienvenido')) {
