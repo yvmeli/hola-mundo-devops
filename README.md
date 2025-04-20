@@ -1,36 +1,84 @@
-# Práctica Final DevOps CI/CD - HTML "Hola Mundo" 🚀
+# Práctica final DevOps CI/CD con GitHub
 
-Este proyecto forma parte de la práctica final del curso de DevOps. Tiene como objetivo aplicar conceptos clave como control de versiones, pruebas automatizadas, contenedores Docker, integración continua (CI) con GitHub Actions y despliegue con GitHub Pages.
+Este repositorio contiene una implementación completa de un flujo de trabajo CI/CD utilizando GitHub Actions, pruebas unitarias con Jest, y despliegue automático a GitHub Pages.
 
-## Descripción
+## Descripción del proyecto
 
-La práctica consiste en:
+El proyecto implementa una página web simple "Hola Mundo" con las siguientes características:
 
-1. Crear una página web simple en HTML que muestre un mensaje "Hola Mundo".
-2. Desarrollar una prueba unitaria para verificar que la página contenga el mensaje correcto.
-3. Construir un contenedor Docker utilizando Nginx para servir la página localmente.
-4. Configurar GitHub Actions para ejecutar automáticamente las pruebas al realizar cambios en el repositorio.
-5. Publicar la página HTML en GitHub Pages.
+- Página HTML básica con estilos CSS
+- Pruebas unitarias usando Jest y jsdom
+- Servidor web Nginx en Docker para pruebas locales
+- Integración continua mediante GitHub Actions
+- Despliegue continuo a GitHub Pages
 
-## Prueba unitaria
+## Estructura del proyecto
 
-Se utiliza Python con `unittest` para validar que el archivo `index.html` contiene el texto "Hola Mundo".
-
-## Docker
-
-El contenedor se basa en Nginx (alpine) y se construye con un simple `Dockerfile` que copia el `index.html` a la carpeta predeterminada de Nginx.
-
-```bash
-docker build -t hola-mundo .
-docker run -d -p 8080:80 hola-mundo
 ```
-Visita: http://localhost:8080
+hola-mundo-devops/
+├── index.html             # Página web "Hola Mundo"
+├── package.json           # Configuración de npm y dependencias
+├── Dockerfile             # Configuración para crear imagen Docker con Nginx
+├── .gitignore             # Configuración para ignorar archivos en Git
+├── test/
+│   └── test.js            # Pruebas unitarias con Jest
+└── .github/
+    └── workflows/
+        └── ci.yml         # Configuración de GitHub Actions
+```
 
-## GitHub Actions
-Se incluye un workflow CI que se activa en cada push o pull request al branch main. Ejecuta la prueba unitaria para garantizar que la página cumple con los requisitos.
+## Tecnologías utilizadas
 
-## GitHub Pages
-La página se encuentra publicada en GitHub Pages para acceso público. Puedes accederla desde la pestaña Pages en la configuración del repositorio.
+- **Frontend**: HTML5, CSS3
+- **Pruebas**: Jest, jsdom
+- **Contenedorización**: Docker, Nginx
+- **CI/CD**: GitHub Actions
+- **Alojamiento**: GitHub Pages
+
+## Cómo ejecutar localmente
+
+### Requisitos previos
+- Node.js y npm
+- Docker
+
+### Para probar la página web
+1. Clonar el repositorio
+```bash
+git clone https://github.com/yvmeli/hola-mundo-devops.git
+cd hola-mundo-devops
+```
+
+2. Ejecutar pruebas unitarias
+```bash
+npm install
+npm test
+```
+
+3. Ejecutar con Docker
+```bash
+docker build -t web-hola-mundo .
+docker run -p 8080:80 web-hola-mundo
+```
+
+4. Visitar `http://localhost:8080` en el navegador
+
+## Flujo de trabajo CI/CD
+
+Este proyecto implementa un flujo de trabajo CI/CD completo:
+
+1. **Integración Continua**: Al hacer push a la rama main, GitHub Actions ejecuta automáticamente las pruebas unitarias.
+2. **Entrega Continua**: Si las pruebas pasan, se construye una imagen Docker.
+3. **Despliegue Continuo**: La página se despliega automáticamente en GitHub Pages.
+
+## Acceso en vivo
+
+La página está disponible en: [https://yvmeli.github.io/hola-mundo-devops/](https://yvmeli.github.io/hola-mundo-devops/)
+
+## Notas importantes
+
+- Se utilizó Jest en lugar de pruebas en Python para mejor integración con el entorno web
+- El archivo `.gitignore` está configurado para excluir `node_modules/` y otros archivos innecesarios
+- El despliegue en GitHub Pages se realiza desde la rama `gh-pages`, que es creada automáticamente por el flujo de trabajo
 
 ## Autora
 Estudiante: Yameli Martínez Taveras
