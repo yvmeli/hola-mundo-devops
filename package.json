@@ -1,0 +1,16 @@
+{
+  "name": "devops-cicd-practica",
+  "version": "1.0.0",
+  "description": "Práctica final de DevOps CI/CD",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "dependencies": {
+    "devops-cicd-practica": "file:"
+  }
+}
